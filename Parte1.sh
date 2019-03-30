@@ -2,7 +2,7 @@
 
 ## Encoding
 # iconv -f utf8 -t ascii//TRANSLIT $0 > profeco_sin_acentos.csv
-sed -e 'y/āáǎàçēéěèīíǐìōóǒòūúǔùǖǘǚǜüĀÁǍÀËĒÉĚÈĪÍǏÌŌÓǑÒŪÚǓÙǕǗǙǛÜ/aaaaceeeeiiiioooouuuuuuuuuAAAAEEEEEIIIIOOOOUUUUUUUUU/' "$1" | iconv -f utf8 -t ascii//TRANSLIT//IGNORE > profeco_sin_acentos.csv
+sed -e 'y/ÑñāáǎàçēéěèīíǐìōóǒòūúǔùǖǘǚǜüĀÁǍÀËĒÉĚÈĪÍǏÌŌÓǑÒŪÚǓÙǕǗǙǛÜ/nnaaaaceeeeiiiioooouuuuuuuuuAAAAEEEEEIIIIOOOOUUUUUUUUU/' "$1" | iconv -f utf8 -t ascii//TRANSLIT//IGNORE > profeco_sin_acentos.csv
 
 
 ## Remove "." andRemove "." and  Convert to lowercase 
@@ -10,7 +10,7 @@ awk '{gsub(/\./, "", $0); gsub(/\|/, "", $0);  print tolower($0)}' profeco_sin_a
 
 ## Substitute inter "," for "|" and remove "
 
-awk -F'"' '{ for (i=1; i<=NF; i+=2) gsub(",", "|", $i) } 1' profeco_minusculas.csv > profeco_final_bash.csv
+awk -F'"' -v OFS='' '{ for (i=1; i<=NF; i+=2) gsub(",", "|", $i) } 1' profeco_minusculas.csv > profeco_final_bash.csv
 
 ## Validate number of fields by row
 
