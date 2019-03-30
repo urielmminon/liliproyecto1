@@ -8,4 +8,4 @@ awk '{gsub(/\./, "", $0); print tolower($0)}' profeco_sin_acentos.csv  > profeco
 
 ## Substitute inter "," for "|" and remove "
 
-awk -F'"' '{ for (i=1; i<=NF; i+=2) gsub(",", "|", $i) } 1' profeco_minusculas.csv > profeco_final_bash.cs > profeco_final_bash.csvv
+awk -F'"' '{ for (i=1; i<=NF; i+=2) gsub(",", "|", $i) } 1' profeco_minusculas.csv > profeco_final_bash.csv
