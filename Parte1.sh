@@ -2,8 +2,7 @@
 
 ## Encoding
 # iconv -f utf8 -t ascii//TRANSLIT $0 > profeco_sin_acentos.csv
-sed -e 'y/ÑñāáǎàçēéěèīíǐìōóǒòūúǔùǖǘǚǜüĀÁǍÀËĒÉĚÈĪÍǏÌŌÓǑÒŪÚǓÙǕǗǙǛÜ/nnaaaaceeeeiiiioooouuuuuuuuuAAAAEEEEEIIIIOOOOUUUUUUUUU/' "$1" | iconv -f utf8 -t ascii//TRANSLIT//IGNORE > profeco_sin_acentos.csv
-
+sed -e 'y/ÑñÁáÉéÍíÓóÚúÜü/NnAaEeIiOoUuUu/' "$1" | iconv -f utf8 -t ascii//TRANSLIT//IGNORE > profeco_sin_acentos.csv
 
 ## Remove "." andRemove "." and  Convert to lowercase 
 awk '{gsub(/\./, "", $0); gsub(/\|/, "", $0);  print tolower($0)}' profeco_sin_acentos.csv  > profeco_minusculas.csv
